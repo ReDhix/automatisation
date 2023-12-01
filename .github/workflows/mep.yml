@@ -2,7 +2,7 @@ name: "workflow de mise en production"
 on: 
   workflow_dispatch: 
     inputs:
-      environnement:
+      server:
         description: 'Environnement à utiliser'
         required: true
         default: 'dev'
@@ -11,8 +11,11 @@ jobs:
     runs-on: Ubuntu-latest
     steps:
       - name: Start workflow
-      - run: echo 'worflow démarré sur ${{ github.ref }}'
+        run: echo 'worflow démarré sur ${{ github.ref }}'
         if: ${{github.event.inputs.environnement == Prod}}
       - name: Checkout
         if: ${{ github.ref == 'refs/heads/main' }}
         uses: actions/checkout@v4.1.1 
+      - name: Prod deploy
+        if: ${{ github.event.inputs.server == 'prod' }}
+        run: echo "PROD"
