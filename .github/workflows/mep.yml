@@ -12,7 +12,6 @@ jobs:
     steps:
       - name: Start workflow
         run: echo 'worflow démarré sur ${{ github.ref }}'
-        if: ${{github.event.inputs.environnement == Prod}}
       - name: Checkout
         if: ${{ github.ref == 'refs/heads/main' }}
         uses: actions/checkout@v4.1.1 
