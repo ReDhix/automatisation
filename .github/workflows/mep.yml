@@ -1,0 +1,21 @@
+name: mep  
+on: 
+  workflow_dispatch: 
+    inputs:
+      environnement:
+        description: 'environnement'
+        required: true
+jobs:
+  premier-job:
+    name: Premier job
+    runs-on: Ubuntu-latest
+    steps:
+      - name: Prod
+      - run: echo 'Prod'
+        if: ${{github.event.inputs.environnement == Prod}}
+      - name: Qual
+      - run: echo 'Qual'
+        if: ${{github.event.inputs.environnement == qual}}
+      - name: Dev
+      - run: echo 'Dev'
+        if: ${{github.event.inputs.environnement == Dev}}
