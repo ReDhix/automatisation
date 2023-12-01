@@ -19,9 +19,9 @@ jobs:
       - name: Prod deploy
         if: ${{ github.event.inputs.server == 'prod' }}
         run: echo "PROD"
-      - name: Qualification
+      - name: Qualif deploy
         if: ${{ github.event.inputs.server == 'qual' }}
         run: exit 1 
-      - name: Dev
+      - name: Dev deploy
         if: ${{ github.event.inputs.server == 'dev' }}
         run: echo "DEV"
